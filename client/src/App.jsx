@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import "./App.css";
 import Companies from "./components/Companies/Companies";
 import Contact from "./components/Contact/Contact";
@@ -8,11 +9,21 @@ import Hero from "./components/Hero/Hero";
 import Residencies from "./components/Residencies/Residencies";
 import Value from "./components/Value/Value";
 import Website from "./pages/website";
-
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Layout from "./components/Layout/Layout";
 
 function App() {
   return (
-    <Website></Website>
+    <BrowserRouter>
+    <Suspense fallback={<div>Loading...</div>}>
+    <Routes>
+      <Route element={<Layout/>} />
+      <Route path="/" element={<Website/>} />
+    {/* <Website></Website> */}
+    </Routes>
+    </Suspense>
+    </BrowserRouter>
+    
   );
 }
 
