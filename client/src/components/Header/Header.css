@@ -12,6 +12,8 @@
 
 .h-menu {
   gap: 2rem;
+  overflow: visible;
+  
 }
 .h-menu > *:hover {
   cursor: pointer;

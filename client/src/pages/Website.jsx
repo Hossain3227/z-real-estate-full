@@ -6,6 +6,7 @@ import Residencies from '../components/Residencies/Residencies'
 import Value from '../components/Value/Value'
 import Contact from '../components/Contact/Contact'
 import GetStarted from '../components/GetStarted/GetStarted'
+import TestMenu from '../components/TestComp/TextComp'
 
 
 const Website = () => {
@@ -21,6 +22,7 @@ const Website = () => {
       <Value/>
       <Contact/>
       <GetStarted/>
+      <TestMenu/>
       
     </div>
   )
