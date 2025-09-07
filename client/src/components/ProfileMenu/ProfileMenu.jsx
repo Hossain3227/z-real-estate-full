@@ -12,11 +12,38 @@ const ProfileMenu = ({user, logout}) => {
       </Menu.Target>
       <Menu.Dropdown style={{ position: "absolute", zIndex: 9999,display: 'flex',
           flexDirection: 'column',alignItems: 'flex-start',
-          minWidth: '120px', }}>
-      <Menu.Item>
+          minWidth: '160px', }}>
+      <Menu.Item 
+      style={{
+            fontSize: '1rem', // increase font size
+            padding: '10px 16px', // bigger clickable area
+            width: '100%', // make it stretch full width
+          }}>
         favorites
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item 
+      style={{
+            fontSize: '1rem', // increase font size
+            padding: '10px 16px', // bigger clickable area
+            width: '100%', // make it stretch full width
+          }}>
+        Bookings
+      </Menu.Item>
+      <Menu.Item
+      style={{
+            fontSize: '1rem', // increase font size
+            padding: '10px 16px', // bigger clickable area
+            width: '100%', // make it stretch full width
+          }}
+      onClick={() => {
+    // remove your own app data if needed
+    localStorage.removeItem("myCustomKey");
+
+    // let Auth0 handle logout
+    logout({
+      logoutParams: { returnTo: window.location.origin },
+    });
+  }}>
         Logout
       </Menu.Item>
       </Menu.Dropdown>
