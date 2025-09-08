@@ -23,7 +23,7 @@ const {data, isLoading, isError} = useQuery(["resd", id], ()=> getProperty(id));
 
 const [modalOpened, setModalOpened] = useState(false);
 const {validateLogin} = useAuthCheck();
-const user = useAuth0();
+const {user} = useAuth0();
 
 if(isLoading){
     return (
