@@ -5,6 +5,7 @@ import React, { useContext, useState } from 'react'
 import { useMutation } from 'react-query'
 import UserDetailContext from '../../Context/UserDetailContext.js'
 import { bookVisit } from '../../utils/api.js'
+import { toast } from 'react-toastify'
 
 const BookingModal = ({opened,setOpened,email,propertyId}) => {
   
@@ -12,8 +13,17 @@ const BookingModal = ({opened,setOpened,email,propertyId}) => {
   const {userDetails : {token}} = useContext(UserDetailContext);
   // console.log(token);
   
+  const handleBookingSuccess = () => {
+    toast.success("You have successfully booked your visit", {
+      position:"bottom-right"
+    })
+  };
+
   const {mutate, isloading} = useMutation({
     mutationFn: ()=> bookVisit(value, propertyId, email, token),
+    onSuccess: ()=>handleBookingSuccess(),
+    onError: ({response}) => toast.error(response.data.message),
+    onSettled: ()=> setOpened(false)
   })
   
   return (
@@ -29,7 +39,7 @@ const BookingModal = ({opened,setOpened,email,propertyId}) => {
             value={value} onChange={setValue}  
             minDate={new Date()}     
             />
-            <Button disabled={!value} onClick={()=>mutate()}>
+            <Button disabled={!value || isloading} onClick={()=>mutate()}>
             Book visit
             </Button>
         </div>
