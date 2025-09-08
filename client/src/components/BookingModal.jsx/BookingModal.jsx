@@ -1,4 +1,6 @@
-import { Modal } from '@mantine/core'
+import { Modal, Button } from '@mantine/core'
+import {DatePicker} from '@mantine/dates'
+
 import React from 'react'
 
 const BookingModal = ({opened,setOpened,email,propertyId}) => {
@@ -10,10 +12,12 @@ const BookingModal = ({opened,setOpened,email,propertyId}) => {
     title="Select your date of visit"
     centered
     >
-        <div>
-            <span>
-                this is booking modal
-            </span>
+        <div className="flexColCenter">
+            <DatePicker       
+            />
+            <Button>
+            Book visit
+            </Button>
         </div>
     </Modal>
   )
