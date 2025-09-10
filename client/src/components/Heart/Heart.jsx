@@ -1,10 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import useAuthCheck from '../../hooks/useAuthCheck'
 import { AiFillHeart } from 'react-icons/ai'
 import { useMutation } from 'react-query'
 import { useAuth0 } from '@auth0/auth0-react'
 import UserDetailContext from '../../Context/UserDetailContext'
-import { updateFavourites } from '../../utils/common.js'
+import { checkFavourites, updateFavourites } from '../../utils/common.js'
 import { toFav } from '../../utils/api.js'
 
 const Heart = ({id}) => {
@@ -12,7 +12,13 @@ const Heart = ({id}) => {
     const [heartColor,setHeartColor] = useState("white")
     const {validateLogin} = useAuthCheck();
     const {user} = useAuth0()
-    const {userDetails : {token, bookings}, setUserDetails} = useContext(UserDetailContext);
+    const {userDetails : {favourites, token}, setUserDetails} = useContext(UserDetailContext);
+
+    useEffect(()=> {
+        setHeartColor(()=> checkFavourites(id, favourites))
+    },[favourites])
+
+
 
     const {mutate} = useMutation({
         mutationFn: ()=> toFav(id,user?.email,token),
