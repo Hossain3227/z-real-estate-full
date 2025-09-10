@@ -4,6 +4,8 @@ import { AiFillHeart } from 'react-icons/ai'
 import { useMutation } from 'react-query'
 import { useAuth0 } from '@auth0/auth0-react'
 import UserDetailContext from '../../Context/UserDetailContext'
+import { updateFavourites } from '../../utils/common.js'
+import { toFav } from '../../utils/api.js'
 
 const Heart = ({id}) => {
 
@@ -13,7 +15,15 @@ const Heart = ({id}) => {
     const {userDetails : {token, bookings}, setUserDetails} = useContext(UserDetailContext);
 
     const {mutate} = useMutation({
-        mutationFn: ()=> toFav(id,user?.email,token)
+        mutationFn: ()=> toFav(id,user?.email,token),
+        onSuccess: ()=>{
+            setUserDetails((prev)=>(
+                {
+                    ...prev,
+                    favourites: updateFavourites(id, prev.favourites)
+                }
+            ))
+        }
     })
 
     const handleLike = () => {
