@@ -18,6 +18,8 @@ function App() {
     bookings: [],
     token: null
   })
+
+  
   return (
     <UserDetailContext.Provider value={{userDetails, setUserDetails}}>
     <QueryClientProvider client={queryClient}>

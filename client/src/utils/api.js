@@ -72,6 +72,27 @@ export const bookVisit = async(date, propertyId, email, token) =>{
     }
 }
 
+export const removeBooking = async (id, email, token) => {
+    try {
+
+        await api.post(
+            `/user/removeBooking/${id}`,
+            {
+                email,
+            },
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        
+    } catch (error) {
+        toast.error("Something went wrong, Please try again");
+        throw error
+    }
+}
+
 
 
 
