@@ -35,7 +35,13 @@ const Header = () => {
           >
             <NavLink to="/properties">Properties</NavLink>
             
-              <a href="mailto:zainkeepscode@gmail.com">Contact</a>
+              <a href="mailto:hasan32.hk27@gmail.com">Contact</a>
+
+            {/* add property */}
+            <div>
+              Add property
+            </div>
+            
               {/* login button */}
             { 
               isLoading ? (
