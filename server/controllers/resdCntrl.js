@@ -7,6 +7,14 @@ export const createResidency = asyncHandler(async (req,res)=>{
     const {title,description,price,address,country,city,facilities,image,userEmail} = req.body.data 
 
     console.log(req.body.data);
+    // 1️⃣ Check userEmail
+  if (!userEmail) {
+    res.status(400);
+    throw new Error("User email is required to create a residency");
+  }
+
+  // 2️⃣ Ensure user exists
+  let user = await prisma.user.findUnique({ where: { email: userEmail } });
 
     try {
         const residency = await prisma.residency.create({
