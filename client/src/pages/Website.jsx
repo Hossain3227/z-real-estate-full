@@ -22,7 +22,7 @@ const Website = () => {
       <Value/>
       <Contact/>
       <GetStarted/>
-      <TestMenu/>
+      {/* <TestMenu/> */}
       
     </div>
   )

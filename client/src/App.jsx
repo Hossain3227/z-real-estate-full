@@ -9,7 +9,8 @@ import {ReactQueryDevtools} from "react-query/devtools"
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Property from "./pages/Property/Property";
-import UserDetailContext from "./Context/UserDetailContext";
+import UserDetailContext from './Context/UserDetailContext.js'
+
 function App() {
   const queryClient = new QueryClient();
 

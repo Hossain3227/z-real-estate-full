@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef } from 'react'
-import UserDetailContext from '../Context/UserDetailContext'
+import UserDetailContext from '../Context/UserDetailContext.js'
 import { useQuery } from 'react-query'
 import { useAuth0 } from '@auth0/auth0-react'
 import { getAllFav } from '../utils/api.js'
