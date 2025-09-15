@@ -109,13 +109,13 @@ if(isError){
                 <span className='secondaryText'>
                 {
                     data?.address
-                }
+                }{" "}
                 {
                     data?.city
-                }
+                }{" "}
                 {
                     data?.country
-                }
+                }{" "}
                 </span>
             </div>
 
