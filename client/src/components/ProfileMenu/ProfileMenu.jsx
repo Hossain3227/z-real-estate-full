@@ -1,7 +1,11 @@
 import { Avatar, Menu } from '@mantine/core'
 import React from 'react'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 const ProfileMenu = ({user, logout}) => {
+
+  const navigate = useNavigate()
+
   return (
     <Menu withinPortal={false} position="bottom-start" offset={5}>
       <Menu.Target>
@@ -18,7 +22,9 @@ const ProfileMenu = ({user, logout}) => {
             fontSize: '1rem', // increase font size
             padding: '10px 16px', // bigger clickable area
             width: '100%', // make it stretch full width
-          }}>
+          }}
+          onClick={()=> navigate("./favourites", {replace:true})}
+          >
         favorites
       </Menu.Item>
       <Menu.Item 
@@ -26,7 +32,9 @@ const ProfileMenu = ({user, logout}) => {
             fontSize: '1rem', // increase font size
             padding: '10px 16px', // bigger clickable area
             width: '100%', // make it stretch full width
-          }}>
+          }}
+          onClick={()=> navigate("./bookings", {replace:true})}
+          >
         Bookings
       </Menu.Item>
       <Menu.Item
