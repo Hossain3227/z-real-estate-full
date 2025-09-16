@@ -1,6 +1,6 @@
 import { Suspense, useState } from "react";
 import "./App.css";
-import Website from "./pages/website";
+import Website from "./pages/Website";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import Properties from "./pages/Properties/Properties";
